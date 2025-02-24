@@ -15,7 +15,7 @@ trait UserJsonProtocol extends DefaultJsonProtocol {
   case class LoginRequest(username: String, password: String)
   case class RegisterRequest(username: String, password: String)
 
-  // Response models
+  // Response models h
   case class AuthResponse(token: String, message: String)
 
   implicit val loginRequestFormat : RootJsonFormat[LoginRequest] = jsonFormat2(LoginRequest)
