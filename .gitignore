@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+frontend/node_modules/
+node_modules/
+>>>>>>> e7efa48 (Saved local changes before switching to Front branch)
 target/
 .idea/
 .vscode/
