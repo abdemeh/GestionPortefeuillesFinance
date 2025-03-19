@@ -19,6 +19,7 @@ class DatabaseConfig(implicit ec: ExecutionContext) {
   // Collection names
   object Collections {
     val Users = "users"
+    val Portfolios = "portfolios"
   }
 
 

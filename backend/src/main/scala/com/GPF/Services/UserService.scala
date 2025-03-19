@@ -87,12 +87,23 @@ println(s"Checking user email: ${user.email}")
   }
 
   // Authenticate user
-  def authenticateUser(email: String, password: String): Future[Boolean] = {
+  /* def authenticateUser(email: String, password: String): Future[Boolean] = {
     findUserByEmail(email).map {
       case Some(user) => password.isBcryptedSafe(user.password).getOrElse(false)
       case None => false
     }
+  } */
+
+  // Authenticate user
+def authenticateUser(email: String, password: String): Future[Option[User]] = {
+  findUserByEmail(email).map {
+    case Some(user) if password.isBcryptedSafe(user.password).getOrElse(false) => Some(user)
+    case _ => None
   }
+}
+
+
+
 
   // Generate a simple token (in a real app, use JWT)
   def generateToken(username: String): String = {

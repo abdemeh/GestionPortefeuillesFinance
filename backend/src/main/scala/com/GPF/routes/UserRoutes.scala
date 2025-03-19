@@ -14,7 +14,7 @@ trait UserJsonProtocol extends DefaultJsonProtocol {
   // Request models
   case class LoginRequest(email: String, password: String)
   case class RegisterRequest(
-                             username : String,
+                             username: String,
                              email: String,
                              password: String,
                              phoneNumber: String,
@@ -22,16 +22,14 @@ trait UserJsonProtocol extends DefaultJsonProtocol {
                              LastName: String
                             )
 
-  
-
   // Response models
-  case class AuthResponse( message: String , token: Option[String] = None)
+  case class AuthResponse(message: String, token: Option[String] = None, username: Option[String] = None)
 
   // Explicitly specify types for all implicit values
   implicit val userFormat: RootJsonFormat[User] = jsonFormat6(User)
   implicit val loginRequestFormat: RootJsonFormat[LoginRequest] = jsonFormat2(LoginRequest)
   implicit val registerRequestFormat: RootJsonFormat[RegisterRequest] = jsonFormat6(RegisterRequest)
-  implicit val authResponseFormat: RootJsonFormat[AuthResponse] = jsonFormat2(AuthResponse)
+  implicit val authResponseFormat: RootJsonFormat[AuthResponse] = jsonFormat3(AuthResponse)
 }
 
 class UserRoutes(userService: UserService)(implicit ec: ExecutionContext) extends UserJsonProtocol {
@@ -43,10 +41,10 @@ class UserRoutes(userService: UserService)(implicit ec: ExecutionContext) extend
           post {
             entity(as[LoginRequest]) { request =>
               onComplete(userService.authenticateUser(request.email, request.password)) {
-                case Success(true) =>
-                  val token = userService.generateToken(request.email)
-                  complete(StatusCodes.OK, AuthResponse( "Login successful" , Some(token)))
-                case Success(false) =>
+                case Success(Some(user)) =>  
+                  val token = userService.generateToken(user.email)
+                  complete(StatusCodes.OK, AuthResponse("Login successful", Some(token), Some(user.username)))
+                case Success(None) =>
                   complete(StatusCodes.Unauthorized, AuthResponse("Invalid credentials"))
                 case Failure(ex) =>
                   complete(StatusCodes.InternalServerError, AuthResponse(s"Authentication error: ${ex.getMessage}"))
@@ -57,11 +55,11 @@ class UserRoutes(userService: UserService)(implicit ec: ExecutionContext) extend
         path("register") {
           post {
             entity(as[RegisterRequest]) { request =>
-              val user = User(request.username, request.email , request.password, request.phoneNumber , request.FirstName , request.LastName  )
+              val user = User(request.username, request.email, request.password, request.phoneNumber, request.FirstName, request.LastName)
               onComplete(userService.registerUser(user)) {
                 case Success(true) =>
-                  val token = userService.generateToken(request.email)
-                  complete(StatusCodes.Created, AuthResponse("User registered successfully" , Some(token)))
+                  val token = userService.generateToken(user.email)
+                  complete(StatusCodes.Created, AuthResponse("User registered successfully", Some(token), Some(user.username)))
                 case Success(false) =>
                   complete(StatusCodes.Conflict, AuthResponse("User already exists"))
                 case Failure(ex) =>
