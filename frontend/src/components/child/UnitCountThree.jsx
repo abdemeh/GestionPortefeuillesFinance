@@ -33,7 +33,10 @@ const UnitCountThree = () => {
             }
         };
 
-        fetchCryptoPrices();
+        fetchCryptoPrices(); // Fetch prices immediately
+        const intervalId = setInterval(fetchCryptoPrices, 60000); // Fetch every minute
+
+        return () => clearInterval(intervalId); // Cleanup interval on unmount
     }, []);
 
     if (loading) {
