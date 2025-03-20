@@ -73,43 +73,6 @@ const ViewProfileLayer = () => {
                                         : (1) 2536 2561 2365
                                     </span>
                                 </li>
-                                <li className="d-flex align-items-center gap-1 mb-12">
-                                    <span className="w-30 text-md fw-semibold text-primary-light">
-                                        {" "}
-                                        Department
-                                    </span>
-                                    <span className="w-70 text-secondary-light fw-medium">
-                                        : Design
-                                    </span>
-                                </li>
-                                <li className="d-flex align-items-center gap-1 mb-12">
-                                    <span className="w-30 text-md fw-semibold text-primary-light">
-                                        {" "}
-                                        Designation
-                                    </span>
-                                    <span className="w-70 text-secondary-light fw-medium">
-                                        : UI UX Designer
-                                    </span>
-                                </li>
-                                <li className="d-flex align-items-center gap-1 mb-12">
-                                    <span className="w-30 text-md fw-semibold text-primary-light">
-                                        {" "}
-                                        Languages
-                                    </span>
-                                    <span className="w-70 text-secondary-light fw-medium">
-                                        : English
-                                    </span>
-                                </li>
-                                <li className="d-flex align-items-center gap-1">
-                                    <span className="w-30 text-md fw-semibold text-primary-light">
-                                        {" "}
-                                        Bio
-                                    </span>
-                                    <span className="w-70 text-secondary-light fw-medium">
-                                        : Lorem Ipsum&nbsp;is simply dummy text of the printing and
-                                        typesetting industry.
-                                    </span>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -152,21 +115,6 @@ const ViewProfileLayer = () => {
                                     Change Password
                                 </button>
                             </li>
-                            <li className="nav-item" role="presentation">
-                                <button
-                                    className="nav-link d-flex align-items-center px-24"
-                                    id="pills-notification-tab"
-                                    data-bs-toggle="pill"
-                                    data-bs-target="#pills-notification"
-                                    type="button"
-                                    role="tab"
-                                    aria-controls="pills-notification"
-                                    aria-selected="false"
-                                    tabIndex={-1}
-                                >
-                                    Notification Settings
-                                </button>
-                            </li>
                         </ul>
                         <div className="tab-content" id="pills-tabContent">
                             <div
@@ -175,39 +123,7 @@ const ViewProfileLayer = () => {
                                 role="tabpanel"
                                 aria-labelledby="pills-edit-profile-tab"
                                 tabIndex={0}
-                            >
-                                <h6 className="text-md text-primary-light mb-16">Profile Image</h6>
-                                {/* Upload Image Start */}
-                                <div className="mb-24 mt-16">
-                                    <div className="avatar-upload">
-                                        <div className="avatar-edit position-absolute bottom-0 end-0 me-24 mt-16 z-1 cursor-pointer">
-                                            <input
-                                                type="file"
-                                                id="imageUpload"
-                                                accept=".png, .jpg, .jpeg"
-                                                hidden
-                                                onChange={readURL}
-                                            />
-                                            <label
-                                                htmlFor="imageUpload"
-                                                className="w-32-px h-32-px d-flex justify-content-center align-items-center bg-primary-50 text-primary-600 border border-primary-600 bg-hover-primary-100 text-lg rounded-circle"
-                                            >
-                                                <Icon icon="solar:camera-outline" className="icon"></Icon>
-                                            </label>
-                                        </div>
-                                        <div className="avatar-preview">
-                                            <div
-                                                id="imagePreview"
-                                                style={{
-                                                    backgroundImage: `url(${imagePreview})`,
-                                                    backgroundSize: 'cover',
-                                                    backgroundPosition: 'center'
-                                                }}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                {/* Upload Image End */}
+                            >                                
                                 <form action="#">
                                     <div className="row">
                                         <div className="col-sm-6">
@@ -256,93 +172,6 @@ const ViewProfileLayer = () => {
                                                     className="form-control radius-8"
                                                     id="number"
                                                     placeholder="Enter phone number"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-6">
-                                            <div className="mb-20">
-                                                <label
-                                                    htmlFor="depart"
-                                                    className="form-label fw-semibold text-primary-light text-sm mb-8"
-                                                >
-                                                    Department
-                                                    <span className="text-danger-600">*</span>{" "}
-                                                </label>
-                                                <select
-                                                    className="form-control radius-8 form-select"
-                                                    id="depart"
-                                                    defaultValue="Select Event Title"
-                                                >
-                                                    <option value="Select Event Title" disabled>
-                                                        Select Event Title
-                                                    </option>
-                                                    <option value="Enter Event Title">Enter Event Title</option>
-                                                    <option value="Enter Event Title One">Enter Event Title One</option>
-                                                    <option value="Enter Event Title Two">Enter Event Title Two</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-6">
-                                            <div className="mb-20">
-                                                <label
-                                                    htmlFor="desig"
-                                                    className="form-label fw-semibold text-primary-light text-sm mb-8"
-                                                >
-                                                    Designation
-                                                    <span className="text-danger-600">*</span>{" "}
-                                                </label>
-                                                <select
-                                                    className="form-control radius-8 form-select"
-                                                    id="desig"
-                                                    defaultValue="Select Designation Title"
-                                                >
-                                                    <option value="Select Designation Title" disabled>
-                                                        Select Designation Title
-                                                    </option>
-                                                    <option value="Enter Designation Title">Enter Designation Title</option>
-                                                    <option value="Enter Designation Title One">Enter Designation Title One</option>
-                                                    <option value="Enter Designation Title Two">Enter Designation Title Two</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-6">
-                                            <div className="mb-20">
-                                                <label
-                                                    htmlFor="Language"
-                                                    className="form-label fw-semibold text-primary-light text-sm mb-8"
-                                                >
-                                                    Language
-                                                    <span className="text-danger-600">*</span>{" "}
-                                                </label>
-                                                <select
-                                                    className="form-control radius-8 form-select"
-                                                    id="Language"
-                                                    defaultValue="Select Language"
-                                                >
-                                                    <option value="Select Language" disabled>
-                                                        Select Language
-                                                    </option>
-                                                    <option value="English">English</option>
-                                                    <option value="Bangla">Bangla</option>
-                                                    <option value="Hindi">Hindi</option>
-                                                    <option value="Arabic">Arabic</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-12">
-                                            <div className="mb-20">
-                                                <label
-                                                    htmlFor="desc"
-                                                    className="form-label fw-semibold text-primary-light text-sm mb-8"
-                                                >
-                                                    Description
-                                                </label>
-                                                <textarea
-                                                    name="#0"
-                                                    className="form-control radius-8"
-                                                    id="desc"
-                                                    placeholder="Write description..."
-                                                    defaultValue={""}
                                                 />
                                             </div>
                                         </div>
@@ -397,102 +226,6 @@ const ViewProfileLayer = () => {
                                             className={`toggle-password ${confirmPasswordVisible ? "ri-eye-off-line" : "ri-eye-line"} cursor-pointer position-absolute end-0 top-50 translate-middle-y me-16 text-secondary-light`}
                                             onClick={toggleConfirmPasswordVisibility}
                                         ></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                className="tab-pane fade"
-                                id="pills-notification"
-                                role="tabpanel"
-                                aria-labelledby="pills-notification-tab"
-                                tabIndex={0}
-                            >
-                                <div className="form-switch switch-primary py-12 px-16 border radius-8 position-relative mb-16">
-                                    <label
-                                        htmlFor="companzNew"
-                                        className="position-absolute w-100 h-100 start-0 top-0"
-                                    />
-                                    <div className="d-flex align-items-center gap-3 justify-content-between">
-                                        <span className="form-check-label line-height-1 fw-medium text-secondary-light">
-                                            Company News
-                                        </span>
-                                        <input
-                                            className="form-check-input"
-                                            type="checkbox"
-                                            role="switch"
-                                            id="companzNew"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-switch switch-primary py-12 px-16 border radius-8 position-relative mb-16">
-                                    <label
-                                        htmlFor="pushNotifcation"
-                                        className="position-absolute w-100 h-100 start-0 top-0"
-                                    />
-                                    <div className="d-flex align-items-center gap-3 justify-content-between">
-                                        <span className="form-check-label line-height-1 fw-medium text-secondary-light">
-                                            Push Notification
-                                        </span>
-                                        <input
-                                            className="form-check-input"
-                                            type="checkbox"
-                                            role="switch"
-                                            id="pushNotifcation"
-                                            defaultChecked=""
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-switch switch-primary py-12 px-16 border radius-8 position-relative mb-16">
-                                    <label
-                                        htmlFor="weeklyLetters"
-                                        className="position-absolute w-100 h-100 start-0 top-0"
-                                    />
-                                    <div className="d-flex align-items-center gap-3 justify-content-between">
-                                        <span className="form-check-label line-height-1 fw-medium text-secondary-light">
-                                            Weekly News Letters
-                                        </span>
-                                        <input
-                                            className="form-check-input"
-                                            type="checkbox"
-                                            role="switch"
-                                            id="weeklyLetters"
-                                            defaultChecked=""
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-switch switch-primary py-12 px-16 border radius-8 position-relative mb-16">
-                                    <label
-                                        htmlFor="meetUp"
-                                        className="position-absolute w-100 h-100 start-0 top-0"
-                                    />
-                                    <div className="d-flex align-items-center gap-3 justify-content-between">
-                                        <span className="form-check-label line-height-1 fw-medium text-secondary-light">
-                                            Meetups Near you
-                                        </span>
-                                        <input
-                                            className="form-check-input"
-                                            type="checkbox"
-                                            role="switch"
-                                            id="meetUp"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-switch switch-primary py-12 px-16 border radius-8 position-relative mb-16">
-                                    <label
-                                        htmlFor="orderNotification"
-                                        className="position-absolute w-100 h-100 start-0 top-0"
-                                    />
-                                    <div className="d-flex align-items-center gap-3 justify-content-between">
-                                        <span className="form-check-label line-height-1 fw-medium text-secondary-light">
-                                            Orders Notifications
-                                        </span>
-                                        <input
-                                            className="form-check-input"
-                                            type="checkbox"
-                                            role="switch"
-                                            id="orderNotification"
-                                            defaultChecked=""
-                                        />
                                     </div>
                                 </div>
                             </div>
