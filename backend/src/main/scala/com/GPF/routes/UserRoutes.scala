@@ -9,6 +9,7 @@ import spray.json._
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
 import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Success}
+import com.GPF.Utils.CORSHandler
 
 trait UserJsonProtocol extends DefaultJsonProtocol {
   // Request models
@@ -32,14 +33,15 @@ trait UserJsonProtocol extends DefaultJsonProtocol {
   implicit val authResponseFormat: RootJsonFormat[AuthResponse] = jsonFormat3(AuthResponse)
 }
 
-class UserRoutes(userService: UserService)(implicit ec: ExecutionContext) extends UserJsonProtocol {
+class UserRoutes(userService: UserService)(implicit ec: ExecutionContext) extends UserJsonProtocol with CORSHandler {
 
-  val routes: Route =
+  val routes: Route = withCORS(
     pathPrefix("auth") {
       concat(
         path("login") {
           post {
             entity(as[LoginRequest]) { request =>
+              println(request)
               onComplete(userService.authenticateUser(request.email, request.password)) {
                 case Success(Some(user)) =>  
                   val token = userService.generateToken(user.email)
@@ -70,4 +72,5 @@ class UserRoutes(userService: UserService)(implicit ec: ExecutionContext) extend
         }
       )
     }
+  )
 }
