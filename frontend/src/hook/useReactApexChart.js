@@ -1,5 +1,5 @@
 import ReactApexChart from "react-apexcharts";
-
+import { useState, useEffect } from 'react';
 const useReactApexChart = () => {
   let chartSeries = [
     {

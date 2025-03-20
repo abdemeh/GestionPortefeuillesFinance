@@ -29,7 +29,7 @@ const NewsPanel = () => {
                 </Link>
               </h6>
               <p className='text-line-2 text-sm text-neutral-500 mb-0'>
-                Le marché des cryptomonnaies a connu une croissance significative au cours des dernières semaines, avec de nombreuses cryptomonnaies atteignant des records historiques.
+                Le marché des cryptomonnaies a connu une poussée très importantes au cours des dernières semaines, avec de nombreuses cryptomonnaies atteignant des records historiques.
               </p>
             </div>
           </div>

@@ -10,8 +10,7 @@ const CryptoMostPopular = () => {
     const [error, setError] = useState(null);
 
     const cryptoList = [
-        'bitcoin', 'ethereum', 'tether', 'binancecoin', 'usd-coin', 'ripple', 'solana', 'cardano', 'dogecoin', 'tron',
-        'chainlink', 'polygon', 'litecoin', 'avalanche-2', 'polkadot', 'shiba-inu', 'dai', 'uniswap', 'cosmos', 'monero'
+        'bitcoin', 'ethereum', 'solana', 'litecoin', 'dogecoin', 'cardano', 'binancecoin'
     ];
 
     const cryptoImages = {
@@ -20,21 +19,8 @@ const CryptoMostPopular = () => {
         'solana': 'assets/images/currency/crypto-img3.png',
         'litecoin': 'assets/images/currency/crypto-img4.png',
         'dogecoin': 'assets/images/currency/crypto-img5.png',
-        'tether': 'assets/images/currency/crypto-img6.png',
-        'binancecoin': 'assets/images/currency/bnb.png',
-        'usd-coin': 'assets/images/currency/img.png',
-        'ripple': 'assets/images/currency/img_1.png',
         'cardano': 'assets/images/currency/img_2.png',
-        'tron': 'assets/images/currency/img_3.png',
-        'chainlink': 'assets/images/currency/img_4.png',
-        'polygon': 'assets/images/currency/img_5.png',
-        'avalanche-2': 'assets/images/currency/img_6.png',
-        'polkadot': 'assets/images/currency/img_7.png',
-        'shiba-inu': 'assets/images/currency/img_8.png',
-        'dai': 'assets/images/currency/img_9.png',
-        'uniswap': 'assets/images/currency/img_10.png',
-        'cosmos': 'assets/images/currency/img_11.png',
-        'monero': 'assets/images/currency/img_12.png',
+        'binancecoin': 'assets/images/currency/bnb.png',
     };
 
     useEffect(() => {
@@ -59,6 +45,9 @@ const CryptoMostPopular = () => {
         };
 
         fetchCryptoData();
+        const intervalId = setInterval(fetchCryptoData, 60000); // Mettre à jour toutes les minutes
+
+        return () => clearInterval(intervalId); // Nettoyer l'intervalle lors du démontage
     }, []);
 
     if (loading) {
