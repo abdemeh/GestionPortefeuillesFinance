@@ -11,12 +11,6 @@ const ExpenseStatistics = () => {
         <div className='card-header'>
           <div className='d-flex align-items-center flex-wrap gap-2 justify-content-between'>
             <h6 className='mb-2 fw-bold text-lg mb-0'>Expense Statistics</h6>
-            <select className='form-select form-select-sm w-auto bg-base border text-secondary-light'>
-              <option>Today</option>
-              <option>Weekly</option>
-              <option>Monthly</option>
-              <option>Yearly</option>
-            </select>
           </div>
         </div>
         <div className='card-body'>
@@ -31,6 +25,17 @@ const ExpenseStatistics = () => {
               height={540}
               width={420}
             />
+          </div>
+          <div className="mb-20">
+            <label
+                htmlFor="tradeValue"
+                className="fw-semibold mb-8 text-primary-light"
+            >
+                Estimated value
+            </label>
+            <h6 className="mb-4 fw-semibold text-xl text-warning-main">
+                $1455.23
+            </h6>
           </div>
         </div>
       </div>

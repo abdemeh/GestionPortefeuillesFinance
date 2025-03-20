@@ -4663,10 +4663,10 @@ const useReactApexChart = () => {
       name: "series1",
       data: [48, 35, 55, 32, 48, 30, 55, 50, 57],
     },
-    {
-      name: "series2",
-      data: [12, 20, 15, 26, 22, 60, 40, 48, 25],
-    },
+    // {
+    //   name: "series2",
+    //   data: [12, 20, 15, 26, 22, 60, 40, 48, 25],
+    // },
   ];
 
   let paymentStatusChartOptionsFour = {
