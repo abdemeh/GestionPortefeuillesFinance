@@ -1,7 +1,7 @@
-# GPF - Gestion de Portefeuilles Financiers
+# Investa - Gestion de Portefeuilles Financiers
 
 ## 📌 Introduction
-GPF (Gestion de Portefeuilles Financiers) est une application permettant aux utilisateurs de gérer leurs portefeuilles financiers de manière sécurisée et efficace. Ce projet comprend un backend en **Scala** avec **MongoDB** et un frontend basé sur des technologies modernes.
+Investa (Gestion de Portefeuilles Financiers) est une application permettant aux utilisateurs de gérer leurs portefeuilles financiers de manière sécurisée et efficace. Ce projet comprend un backend en **Scala** avec **MongoDB** et un frontend basé sur des technologies modernes.
 
 ## 🏗️ Architecture du Projet
 - **Backend :** Développé en **Scala** avec le framework **Akka HTTP** et utilisant **MongoDB** comme base de données.
@@ -72,4 +72,4 @@ Email : [abdellatif.elmahdaoui@gmail.com](mailto:abdellatif.elmahdaoui@gmail.com
 LinkedIn : [www.linkedin.com/in/elmahdaoui](https://www.linkedin.com/in/elmahdaoui)
 
 ---
-🚀 **GPF - Gérez vos finances avec confiance !**
+🚀 **Investa - Gérez vos finances avec confiance !**
