@@ -73,7 +73,7 @@ LinkedIn : [www.linkedin.com/in/elmahdaoui](https://www.linkedin.com/in/elmahdao
 
 Contribiteur_3 : **Nada MCHICH**  
 Email : [nmchich55@gmail.com](mailto:nmchich55@gmail.com)  
-LinkedIn : [www.linkedin.com/in/mchich](https://www.linkedin.com/in/mchich)
+LinkedIn : [www.linkedin.com/in/mchich](https://www.linkedin.com/in/nada-mchich-9baa8625a/)
 
 ---
 🚀 **Investa - Gérez vos finances avec confiance !**
