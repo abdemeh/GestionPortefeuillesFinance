@@ -1,10 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import useReactApexChart from '../../hook/useReactApexChart';
 import ReactApexChart from 'react-apexcharts';
 import { Icon } from '@iconify/react/dist/iconify.js';
+import axios from 'axios';
 
 const CryptoAnalytics = () => {
-    let { candleStickChartSeries, candleStickChartOptions } = useReactApexChart();
+    const [candleStickChartSeries, setCandleStickChartSeries] = useState([]);
+    const { candleStickChartOptions } = useReactApexChart(candleStickChartSeries);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getBitcoinDataForOneMonth();
+            if (data) {
+                setCandleStickChartSeries(data);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    const getBitcoinDataForOneMonth = async () => {
+        const now = Math.floor(Date.now() / 1000);
+        const oneMonthAgo = now - (30 * 24 * 60 * 60);
+
+        try {
+            const response = await axios.get(
+                `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=${oneMonthAgo}&to=${now}`
+            );
+
+            const data = response.data.prices.map((item) => ({
+                x: new Date(item[0]),
+                y: [item[1], item[2], item[3], item[4]],
+            }));
+
+            return [
+                {
+                    data: data,
+                },
+            ];
+        } catch (error) {
+            console.error('Erreur lors de la récupération des données:', error);
+            return null;
+        }
+    };
+
     return (
         <div className='card h-100 p-0 radius-12'>
             <div className='card-body px-24 py-32'>
@@ -17,14 +56,14 @@ const CryptoAnalytics = () => {
                         />
                         <div className='flex-grow-1 d-flex flex-column'>
                             <h4 className='mb-4'>
-                                Bitcoin{" "}
+                                Bitcoin
                                 <span className='text-md text-neutral-400 fw-semibold'>
-                        BTC
-                      </span>{" "}
+                                    BTC
+                                </span>
                             </h4>
                             <span className='text-md mb-0 fw-medium text-neutral-500 d-block'>
-                      Currency in USD. Market Open
-                    </span>
+                                Currency in USD. Market Open
+                            </span>
                         </div>
                     </div>
                     <div className='d-flex align-items-center gap-24'>
@@ -32,16 +71,16 @@ const CryptoAnalytics = () => {
                             <div className='d-flex align-items-center gap-8 mb-4'>
                                 <h6 className='mb-0'>$0.32533</h6>
                                 <span className='text-sm fw-semibold rounded-pill bg-success-focus text-success-main border br-success px-8 py-4 line-height-1 d-flex align-items-center gap-1'>
-                        <Icon icon='bxs:up-arrow' className='text-xs' /> 10%
-                      </span>
+                                    <Icon icon='bxs:up-arrow' className='text-xs' /> 10%
+                                </span>
                             </div>
                             <div className=''>
-                      <span className='fw-semibold text-secondary-light text-sm'>
-                        +0,021301
-                      </span>
+                                <span className='fw-semibold text-secondary-light text-sm'>
+                                    +0,021301
+                                </span>
                                 <span className='fw-semibold text-success-600 text-sm'>
-                        (+6.42%)
-                      </span>
+                                    (+6.42%)
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -58,19 +97,24 @@ const CryptoAnalytics = () => {
                                                 type="radio"
                                                 name="crypto"
                                                 id="1M"
-                                                defaultChecked // Sélectionner par défaut
+                                                defaultChecked
                                             />
                                             <label
                                                 className="form-check-label line-height-1 fw-medium text-secondary-light"
                                                 htmlFor="1M"
                                             >
-                                                {" "}
                                                 1M
                                             </label>
                                         </div>
                                     </div>
                                 </div>
-                                <ReactApexChart options={candleStickChartOptions} series={candleStickChartSeries} type="candlestick" height={350} id="candleStickChart" />
+                                <ReactApexChart
+                                    options={candleStickChartOptions}
+                                    series={candleStickChartSeries}
+                                    type="candlestick"
+                                    height={350}
+                                    id="candleStickChart"
+                                />
                             </div>
                         </div>
                     </div>
@@ -79,7 +123,6 @@ const CryptoAnalytics = () => {
                             id='timeSeriesChart'
                             className='apexcharts-tooltip-style-1'
                         />
-
                     </div>
                 </div>
             </div>
