@@ -23,7 +23,7 @@ trait UserJsonProtocol extends DefaultJsonProtocol {
                             )
 
   // Response models
-  case class AuthResponse(message: String, token: Option[String] = None, username: Option[String] = None)
+  case class AuthResponse(message: String, token: Option[String] = None, userId: Option[String] = None)
 
   // Explicitly specify types for all implicit values
   implicit val userFormat: RootJsonFormat[User] = jsonFormat6(User)

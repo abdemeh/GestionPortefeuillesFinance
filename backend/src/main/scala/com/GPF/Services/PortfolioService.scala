@@ -1,4 +1,4 @@
-package com.GPF.services
+package com.GPF.Services
 
 import com.GPF.config.DatabaseConfig
 import com.GPF.models.Portfolio
@@ -33,8 +33,8 @@ class PortfolioService(dbConfig: DatabaseConfig)(implicit ec: ExecutionContext) 
     assets = Json.parse(doc.getString("assets")).as[Map[String,Double]],
     totalValue = doc.getDouble("totalValue"),
     Balance = doc.getDouble("Balance"),
-    createdAt = doc.getString("created"),
-    updatedAt = doc.getString("updated")
+    createdAt = doc.getString("createdAt"),
+    updatedAt = doc.getString("updatedAt")
     
   )
   }
@@ -52,10 +52,33 @@ class PortfolioService(dbConfig: DatabaseConfig)(implicit ec: ExecutionContext) 
     portfolioCollection.insertOne(document).toFuture().map(_ => true).recover { case _ => false }
   }
 
-  // Retrieve portfolio by userId
+  /* // Retrieve portfolio by userId
   def getPortfolioByUserId(userId: String): Future[Option[Portfolio]] = {
+    println("getPortfolioByUserId" + userId)
     portfolioCollection.find(equal("userId", userId)).first().toFutureOption().map(_.map(documentToPortfolio))
-  }
+  } */
+
+  def getPortfolioByUserId(userId: String): Future[Option[Portfolio]] = {
+  println(s"Fetching portfolio for userId: $userId")
+  
+  // Debug: Print the query being executed
+  val query = equal("userId", userId)
+  println(s"Executing query: $query")
+
+  portfolioCollection
+    .find(query)
+    .first()
+    .toFutureOption()
+    .map { documentOption =>
+      //println(s"Query result: $documentOption")
+      documentOption.map(documentToPortfolio)
+    }
+    .recover {
+      case ex: Exception =>
+        println(s"Error fetching portfolio: ${ex.getMessage}")
+        None
+    }
+}
 
   // Update portfolio
   def updatePortfolio(userId: String, portfolio: Portfolio): Future[Boolean] = {
