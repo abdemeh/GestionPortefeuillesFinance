@@ -67,5 +67,9 @@ Contribiteur_1 : **Mohamed Limam LIMAM**
 Email : [mohamedlimamuia@gmail.com](mailto:mohamedlimamua@gmail.com)  
 LinkedIn : [www.linkedin.com/in/mohamedlimam](https://www.linkedin.com/in/mohamedlimam)
 
+Contribiteur_2 : **Abdellatif EL MAHDAOUI**  
+Email : [abdellatif.elmahdaoui@gmail.com](mailto:abdellatif.elmahdaoui@gmail.com)  
+LinkedIn : [www.linkedin.com/in/elmahdaoui](https://www.linkedin.com/in/elmahdaoui)
+
 ---
 🚀 **GPF - Gérez vos finances avec confiance !**
