@@ -71,5 +71,9 @@ Contribiteur_2 : **Abdellatif EL MAHDAOUI**
 Email : [abdellatif.elmahdaoui@gmail.com](mailto:abdellatif.elmahdaoui@gmail.com)  
 LinkedIn : [www.linkedin.com/in/elmahdaoui](https://www.linkedin.com/in/elmahdaoui)
 
+Contribiteur_3 : **Nada MCHICH**  
+Email : [nmchich55@gmail.com](mailto:nmchich55@gmail.com)  
+LinkedIn : [www.linkedin.com/in/mchich](https://www.linkedin.com/in/mchich)
+
 ---
 🚀 **Investa - Gérez vos finances avec confiance !**
