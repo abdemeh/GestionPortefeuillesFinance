@@ -85,8 +85,13 @@ import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Success}
 
 trait PortfolioJsonProtocol extends DefaultJsonProtocol {
+  case class Response(message : String , data : Option[String] = None)
   implicit val portfolioFormat: RootJsonFormat[Portfolio] = jsonFormat6(Portfolio)
+  implicit val ResponseFormat : RootJsonFormat[Response] = jsonFormat2(Response)
 }
+
+
+
 
 class PortfolioRoutes(portfolioService: PortfolioService)(implicit ec: ExecutionContext) extends PortfolioJsonProtocol with CORSHandler {
 
@@ -96,8 +101,9 @@ class PortfolioRoutes(portfolioService: PortfolioService)(implicit ec: Execution
       path("create") {
         post {
           entity(as[Portfolio]) { portfolio =>
+            println("creating portfolio" , portfolio)
             onComplete(portfolioService.createPortfolio(portfolio)) {
-              case Success(true)  => complete(StatusCodes.Created, "Portfolio created successfully")
+              case Success(true)  => complete(StatusCodes.Created, Response("Portfolio created successfully"))
               case Success(false) => complete(StatusCodes.InternalServerError, "Portfolio creation failed")
               case Failure(ex)    => complete(StatusCodes.InternalServerError, s"Error: ${ex.getMessage}")
             }

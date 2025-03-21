@@ -141,7 +141,7 @@ const SignInLayer = () => {
       console.log(data);
       // Save the received data as a cookie
       document.cookie = `userData=${JSON.stringify(data)}; path=/; max-age=${7 * 24 * 60 * 60}; Secure; SameSite=Strict`;
-      alert("Sign in successful");
+      //alert("Sign in successful");
       navigate("/homePage"); // Redirect to the home page
     } catch (err) {
       setError("Network error, please try again later.");

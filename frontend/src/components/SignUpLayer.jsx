@@ -136,6 +136,7 @@ export default SignUpLayer;
 import { Icon } from "@iconify/react/dist/iconify.js";
 import React, { useState } from "react";
 import { Link , useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const SignUpLayer = () => {
   const [formData, setFormData] = useState({
@@ -197,7 +198,7 @@ const SignUpLayer = () => {
 
     const responseData = await response.json();
     console.log("responseData"  , responseData)
-    if (response.ok) {
+    /* if (response.ok) {
       // Check for success response and handle it
       if (responseData.message === "User registered successfully" && responseData.token && responseData.username) {
         // Save the token and username (or userId if returned)
@@ -218,7 +219,64 @@ const SignUpLayer = () => {
         console.error("Unexpected error:", responseData.message);
       }
     }
-  };
+  }; */
+  if (response.ok) {
+    // Check for success response and handle it
+    if (responseData.message === "User registered successfully" && responseData.token && responseData.userId) {
+      console.log("hello") ;
+      // Prepare the user data to be stored in the cookie
+      const userData = {
+        message: "Login successful",
+        token: responseData.token,
+        userId: responseData.userId
+      };
+      // Manually decode the JSON string before setting the cookie
+      const decodedUserDataString = decodeURIComponent(JSON.stringify(userData));
+      console.log(decodedUserDataString)
+
+      // Save the user data as a cookie named "userData"
+      Cookies.set("userData", decodedUserDataString, { expires: 7 }); // Expires in 7 days
+
+      // Send a request to create a portfolio
+      const portfolioResponse = await fetch("http://localhost:8080/api/portfolio/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: responseData.userId,
+          assets: {
+            
+          },
+          totalValue: 0,
+          Balance: 0,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        })
+      });
+
+      const portfolioData = await portfolioResponse.json();
+      console.log("portfolioData", portfolioData);
+
+      if (portfolioResponse.ok) {
+        // Redirect the user to the profile page
+        navigate("/index-11");  // Redirect to the profile page
+      } else {
+        console.error("Failed to create portfolio:", portfolioData.message);
+      }
+    }
+  } else {
+    // Handle error response based on the status code
+    if (responseData.message === "User already exists") {
+      console.error("User already exists");
+    } else if (responseData.message.includes("Registration error")) {
+      console.error("Registration failed: ", responseData.message);
+    } else {
+      console.error("Unexpected error:", responseData.message);
+    }
+  }
+};
+
 
   return (
     <section className="auth bg-base d-flex flex-wrap">
