@@ -1,4 +1,4 @@
-package com.finance.api
+package com.GPF.api
 
 import akka.actor.typed.ActorSystem
 import akka.http.scaladsl.Http

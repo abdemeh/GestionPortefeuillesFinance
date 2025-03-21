@@ -11,7 +11,11 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-stream" % "2.6.19",
   "org.mongodb.scala" %% "mongo-scala-driver" % "4.4.0",
   "com.github.t3hnar" %% "scala-bcrypt" % "4.3.0"  , // For password hashing
-  "com.typesafe.play" %% "play-json" % "2.9.4"
+  "com.typesafe.play" %% "play-json" % "2.9.4",
+  // pour coin Gecko
+  "com.softwaremill.sttp.client3" %% "core" % "3.3.18",
+  "com.softwaremill.sttp.client3" %% "circe" % "3.3.18",
+  "io.circe" %% "circe-generic" % "0.14.1"
 
 
 )
