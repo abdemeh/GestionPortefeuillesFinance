@@ -33,10 +33,11 @@ const UnitCountThree = () => {
             }
         };
 
-        fetchCryptoPrices(); // Fetch prices immediately
-        const intervalId = setInterval(fetchCryptoPrices, 60000); // Fetch every minute
+        fetchCryptoPrices();
 
-        return () => clearInterval(intervalId); // Cleanup interval on unmount
+        // Suppression de l'intervalle d'actualisation
+        // const intervalId = setInterval(fetchCryptoPrices, 60000);
+        // return () => clearInterval(intervalId);
     }, []);
 
     if (loading) {
@@ -50,7 +51,7 @@ const UnitCountThree = () => {
     return (
         <div className="row row-cols-xxxl-5 row-cols-lg-3 row-cols-sm-2 row-cols-1 gy-4 mb-1">
             <div className="col">
-                <Link className="card shadow-none border bg-gradient-end-3" to="/marketplace-details">
+                <Link to="/marketplace-details/bitcoin" className="card shadow-none border bg-gradient-end-3">
                     <div className="card-body p-20">
                         <div className="d-flex flex-wrap align-items-center justify-content-between gap-3">
                             <img
@@ -76,7 +77,7 @@ const UnitCountThree = () => {
                 </Link>
             </div>
             <div className="col">
-                <Link to="/marketplace-details" className="card shadow-none border bg-gradient-end-1">
+                <Link to="/marketplace-details/ethereum" className="card shadow-none border bg-gradient-end-1">
                     <div className="card-body p-20">
                         <div className="d-flex flex-wrap align-items-center justify-content-between gap-3">
                             <img
@@ -102,7 +103,7 @@ const UnitCountThree = () => {
                 </Link>
             </div>
             <div className="col">
-                <Link to="/marketplace-details" className="card shadow-none border bg-gradient-end-5">
+                <Link to="/marketplace-details/solana" className="card shadow-none border bg-gradient-end-5">
                     <div className="card-body p-20">
                         <div className="d-flex flex-wrap align-items-center justify-content-between gap-3">
                             <img
@@ -128,7 +129,7 @@ const UnitCountThree = () => {
                 </Link>
             </div>
             <div className="col">
-                <Link to="/marketplace-details" className="card shadow-none border bg-gradient-end-6">
+                <Link to="/marketplace-details/litecoin" className="card shadow-none border bg-gradient-end-6">
                     <div className="card-body p-20">
                         <div className="d-flex flex-wrap align-items-center justify-content-between gap-3">
                             <img

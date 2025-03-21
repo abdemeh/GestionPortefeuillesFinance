@@ -45,9 +45,10 @@ const CryptoMostPopular = () => {
         };
 
         fetchCryptoData();
-        const intervalId = setInterval(fetchCryptoData, 60000); // Mettre à jour toutes les minutes
 
-        return () => clearInterval(intervalId); // Nettoyer l'intervalle lors du démontage
+        // Suppression de l'intervalle d'actualisation
+        // const intervalId = setInterval(fetchCryptoData, 60000); // Mettre à jour toutes les minutes
+        // return () => clearInterval(intervalId); // Nettoyer l'intervalle lors du démontage
     }, []);
 
     if (loading) {
@@ -70,7 +71,7 @@ const CryptoMostPopular = () => {
                             <div className="d-flex flex-wrap align-items-center justify-content-between gap-2">
                                 <img src={crypto.image} alt={crypto.name} className="w-36-px h-36-px rounded-circle flex-shrink-0" />
                                 <div className="flex-grow-1">
-                                    <Link to='/marketplace-details'><h6 className="text-md mb-0">{crypto.name}</h6></Link>
+                                    <Link to={`/marketplace-details/${crypto.id}`}><h6 className="text-md mb-0">{crypto.name}</h6></Link>
                                 </div>
                             </div>
                             <h6 className="text-md fw-medium mb-0">${crypto.price?.toLocaleString()}</h6>

@@ -96,6 +96,8 @@ import ComingSoonPage from "./pages/ComingSoonPage";
 import AccessDeniedPage from "./pages/AccessDeniedPage";
 import MaintenancePage from "./pages/MaintenancePage";
 import BlankPagePage from "./pages/BlankPagePage";
+import CryptoAnalytics from "./components/child/CryptoAnalytics"; // Importez CryptoAnalytics
+import CryptoList from "./components/CryptoList"; // Importez CryptoList
 
 function App() {
   return (
@@ -220,11 +222,23 @@ function App() {
         <Route exact path='/wallet' element={<WalletPage />} />
         <Route exact path='/widgets' element={<WidgetsPage />} />
         <Route exact path='/wizard' element={<WizardPage />} />
+        <Route
+            exact
+            path='/marketplace-details/:cryptoId'
+            element={<CryptoAnalytics />}
+        />
+        <Route exact path='/marketplace' element={<CryptoList />} />
+        <Route
+            exact
+            path='/notification-alert'
+            element={<NotificationAlertPage />}
+        />
 
         <Route exact path='*' element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );
+
 }
 
 export default App;

@@ -58,7 +58,11 @@ const CryptoTrendingNow = () => {
             }
         };
 
-        fetchTrendingCryptoData();
+        fetchTrendingCryptoData(); // Fetch prices immediately
+
+        // Suppression de l'intervalle d'actualisation
+        // const intervalId = setInterval(fetchTrendingCryptoData, 60000); // Fetch every minute
+        // return () => clearInterval(intervalId); // Cleanup interval on unmount
     }, []);
 
     if (loading) {
@@ -81,7 +85,7 @@ const CryptoTrendingNow = () => {
                             <div className="d-flex flex-wrap align-items-center justify-content-between gap-2">
                                 <img src={crypto.image} alt={crypto.name} className="w-36-px h-36-px rounded-circle flex-shrink-0" />
                                 <div className="flex-grow-1">
-                                    <Link to='/marketplace-details'><h6 className="text-md mb-0">{crypto.name}</h6></Link>
+                                    <Link to={`/marketplace-details/${crypto.id}`}><h6 className="text-md mb-0">{crypto.name}</h6></Link>
                                 </div>
                             </div>
                             <h6 className="text-md fw-medium mb-0">${crypto.price?.toLocaleString()}</h6>
