@@ -25,12 +25,20 @@ trait UserJsonProtocol extends DefaultJsonProtocol {
 
   // Response models
   case class AuthResponse(message: String, token: Option[String] = None, userId: Option[String] = None)
+  case class ProfileResponse(message : String ,
+                             userId:Option[String] = None ,
+                              FirstName : Option[String] = None ,
+                               LastName:Option[String] = None ,
+                                phoneNumber:Option[String] = None ,
+                                 email: Option[String] = None
+                                 )
 
   // Explicitly specify types for all implicit values
   implicit val userFormat: RootJsonFormat[User] = jsonFormat6(User)
   implicit val loginRequestFormat: RootJsonFormat[LoginRequest] = jsonFormat2(LoginRequest)
   implicit val registerRequestFormat: RootJsonFormat[RegisterRequest] = jsonFormat6(RegisterRequest)
   implicit val authResponseFormat: RootJsonFormat[AuthResponse] = jsonFormat3(AuthResponse)
+  implicit val profileResponseFormat: RootJsonFormat[ProfileResponse] = jsonFormat6(ProfileResponse)
 }
 
 class UserRoutes(userService: UserService)(implicit ec: ExecutionContext) extends UserJsonProtocol with CORSHandler {
@@ -67,6 +75,22 @@ class UserRoutes(userService: UserService)(implicit ec: ExecutionContext) extend
                 case Failure(ex) =>
                   complete(StatusCodes.InternalServerError, AuthResponse(s"Registration error: ${ex.getMessage}"))
               }
+            }
+          }
+        },
+         path("profile" / Segment) { username => // New endpoint for fetching user profile
+          get {
+            onComplete(userService.findUserByUsername(username)) {
+              case Success(Some(user)) =>
+                complete(StatusCodes.OK, ProfileResponse("User profile retrieved successfully", Some(user.username) ,
+                                                                                                Some(user.FirstName) ,
+                                                                                                Some(user.LastName),
+                                                                                                Some(user.phoneNumber),
+                                                                                                Some(user.email) ))
+              case Success(None) =>
+                complete(StatusCodes.NotFound, ProfileResponse("User not found"))
+              case Failure(ex) =>
+                complete(StatusCodes.InternalServerError, ProfileResponse(s"Error retrieving user profile: ${ex.getMessage}"))
             }
           }
         }

@@ -39,7 +39,7 @@ class UserService(dbConfig: DatabaseConfig)(implicit ec: ExecutionContext) {
       .map(_.map(documentToUser))
   }
 
-  // Find user by username
+  // Find user by email
   def findUserByEmail(email: String): Future[Option[User]] = {
     usersCollection
       .find(equal("email", email))
