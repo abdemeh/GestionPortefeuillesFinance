@@ -78,6 +78,7 @@ import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 import com.GPF.models.Portfolio
 import com.GPF.Services.PortfolioService
+import com.GPF.Utils.CORSHandler
 import spray.json._
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
 import scala.concurrent.{ExecutionContext, Future}
@@ -87,9 +88,9 @@ trait PortfolioJsonProtocol extends DefaultJsonProtocol {
   implicit val portfolioFormat: RootJsonFormat[Portfolio] = jsonFormat6(Portfolio)
 }
 
-class PortfolioRoutes(portfolioService: PortfolioService)(implicit ec: ExecutionContext) extends PortfolioJsonProtocol {
+class PortfolioRoutes(portfolioService: PortfolioService)(implicit ec: ExecutionContext) extends PortfolioJsonProtocol with CORSHandler {
 
-  val routes: Route = pathPrefix("portfolio") {
+  val routes: Route = withCORS(pathPrefix("portfolio") {
     concat(
       // Create portfolio
       path("create") {
@@ -141,4 +142,5 @@ class PortfolioRoutes(portfolioService: PortfolioService)(implicit ec: Execution
       }
     )
   }
+  )
 }

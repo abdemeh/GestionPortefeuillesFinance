@@ -30,7 +30,8 @@ class PortfolioService(dbConfig: DatabaseConfig)(implicit ec: ExecutionContext) 
   def documentToPortfolio(doc: Document): Portfolio = {
   Portfolio(
     userId = doc.getString("userId"),
-    assets = Json.parse(doc.getString("assets")).as[Map[String,Double]],
+    //assets = Json.parse(doc.getString("assets")).as[Map[String,Double]],
+    assets = Json.parse(doc.get("assets").get.asDocument().toJson()).as[Map[String, Double]],
     totalValue = doc.getDouble("totalValue"),
     Balance = doc.getDouble("Balance"),
     createdAt = doc.getString("createdAt"),
@@ -43,7 +44,8 @@ class PortfolioService(dbConfig: DatabaseConfig)(implicit ec: ExecutionContext) 
   def createPortfolio(portfolio: Portfolio): Future[Boolean] = {
     val document = Document(
   "userId" -> portfolio.userId,
-  "assets" -> (Json.toJson(portfolio.assets)).toString(),
+  //"assets" -> (Json.toJson(portfolio.assets)).toString(),
+  "assets" -> BsonDocument(Json.toJson(portfolio.assets).toString()),
   "totalValue" -> portfolio.totalValue,
   "Balance" -> portfolio.Balance,
   "createdAt" -> portfolio.createdAt,

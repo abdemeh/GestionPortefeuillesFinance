@@ -73,7 +73,7 @@ const ViewProfileLayer = () => {
                                         : (1) 2536 2561 2365
                                     </span>
                                 </li>
-                                <li className="d-flex align-items-center gap-1 mb-12">
+                                {/* <li className="d-flex align-items-center gap-1 mb-12">
                                     <span className="w-30 text-md fw-semibold text-primary-light">
                                         {" "}
                                         Department
@@ -109,7 +109,7 @@ const ViewProfileLayer = () => {
                                         : Lorem Ipsum&nbsp;is simply dummy text of the printing and
                                         typesetting industry.
                                     </span>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                     </div>
@@ -152,7 +152,7 @@ const ViewProfileLayer = () => {
                                     Change Password
                                 </button>
                             </li>
-                            <li className="nav-item" role="presentation">
+                            {/* <li className="nav-item" role="presentation">
                                 <button
                                     className="nav-link d-flex align-items-center px-24"
                                     id="pills-notification-tab"
@@ -166,7 +166,7 @@ const ViewProfileLayer = () => {
                                 >
                                     Notification Settings
                                 </button>
-                            </li>
+                            </li> */}
                         </ul>
                         <div className="tab-content" id="pills-tabContent">
                             <div
@@ -176,9 +176,9 @@ const ViewProfileLayer = () => {
                                 aria-labelledby="pills-edit-profile-tab"
                                 tabIndex={0}
                             >
-                                <h6 className="text-md text-primary-light mb-16">Profile Image</h6>
+                                {/* <h6 className="text-md text-primary-light mb-16">Profile Image</h6> */}
                                 {/* Upload Image Start */}
-                                <div className="mb-24 mt-16">
+                              {/*   <div className="mb-24 mt-16">
                                     <div className="avatar-upload">
                                         <div className="avatar-edit position-absolute bottom-0 end-0 me-24 mt-16 z-1 cursor-pointer">
                                             <input
@@ -206,7 +206,7 @@ const ViewProfileLayer = () => {
                                             />
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                                 {/* Upload Image End */}
                                 <form action="#">
                                     <div className="row">
@@ -259,7 +259,7 @@ const ViewProfileLayer = () => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="col-sm-6">
+                                       {/*  <div className="col-sm-6">
                                             <div className="mb-20">
                                                 <label
                                                     htmlFor="depart"
@@ -345,7 +345,7 @@ const ViewProfileLayer = () => {
                                                     defaultValue={""}
                                                 />
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                     <div className="d-flex align-items-center justify-content-center gap-3">
                                         <button
@@ -400,7 +400,7 @@ const ViewProfileLayer = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div
+                            {/* <div
                                 className="tab-pane fade"
                                 id="pills-notification"
                                 role="tabpanel"
@@ -495,7 +495,7 @@ const ViewProfileLayer = () => {
                                         />
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

@@ -95,12 +95,13 @@ export default SignInLayer;
 
 import { Icon } from "@iconify/react";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 
 const SignInLayer = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const validateInputs = () => {
     if (!email) return "Email is required";
@@ -138,7 +139,10 @@ const SignInLayer = () => {
     
       const data = await response.json();
       console.log(data);
+      // Save the received data as a cookie
+      document.cookie = `userData=${JSON.stringify(data)}; path=/; max-age=${7 * 24 * 60 * 60}; Secure; SameSite=Strict`;
       alert("Sign in successful");
+      navigate("/homePage"); // Redirect to the home page
     } catch (err) {
       setError("Network error, please try again later.");
     }

@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 
@@ -19,7 +19,7 @@ const QuickTransfer = () => {
     <div className='card radius-16'>
       <div className='card-header'>
         <div className='d-flex align-items-center flex-wrap gap-2 justify-content-between'>
-          <h6 className='mb-2 fw-bold text-lg mb-0'>Quick Transfer</h6>
+          <h6 className='mb-2 fw-bold text-lg mb-0'>Solde</h6>
         </div>
       </div>
       <div className='card-body p-0'>
@@ -31,9 +31,12 @@ const QuickTransfer = () => {
               className='position-absolute top-0 start-0 w-100 h-100 z-n1'
             />
             <h3 className='text-white'>$500.00</h3>
-            <span className='text-white'>Your Balance</span>
+            <span className='text-white'>Ton Solde Actuel</span>
           </div>
         </div>
+        
+        
+        
         <div className='px-24 bg-neutral-100 border-bottom-0 py-20 dark-bg-neutral-200'>
           <div className='d-flex align-items-center flex-wrap gap-2 justify-content-between'>
             <h6 className='mb-2 fw-bold text-lg mb-0'>Contacts</h6>
@@ -184,6 +187,55 @@ const QuickTransfer = () => {
               </div>
             </div>
           </form>
+        </div>
+
+
+
+      </div>
+    </div>
+  );
+};
+
+export default QuickTransfer;
+ */
+
+import React from "react";
+import { Link } from "react-router-dom";
+import Slider from "react-slick";
+
+// Modify the QuickTransfer component to accept `solde` as a prop
+const QuickTransfer = ({ solde }) => {
+  const settings = {
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    arrows: false,
+    dots: false,
+    speed: 800,
+    centerPadding: "20px",
+    infinite: true,
+    autoplaySpeed: 2000,
+    centerMode: true,
+    autoplay: false,
+  };
+  return (
+    <div className='card radius-16'>
+      <div className='card-header'>
+        <div className='d-flex align-items-center flex-wrap gap-2 justify-content-between'>
+          <h6 className='mb-2 fw-bold text-lg mb-0'>Solde</h6>
+        </div>
+      </div>
+      <div className='card-body p-0'>
+        <div className='p-20'>
+          <div className='position-relative z-1 py-32 text-center px-3'>
+            <img
+              src='assets/images/home-eleven/bg/bg-orange-gradient.png'
+              alt=''
+              className='position-absolute top-0 start-0 w-100 h-100 z-n1'
+            />
+            {/* Display the solde dynamically */}
+            <h3 className='text-white'>${solde}</h3>
+            <span className='text-white'>Ton Solde Actuel</span>
+          </div>
         </div>
       </div>
     </div>

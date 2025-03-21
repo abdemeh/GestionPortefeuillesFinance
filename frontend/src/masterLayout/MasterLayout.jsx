@@ -143,7 +143,7 @@ const MasterLayout = ({ children }) => {
                 <span>Profil</span>
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink
                 to='/wallet'
                 className={(navData) => (navData.isActive ? "active-page" : "")}
@@ -151,7 +151,7 @@ const MasterLayout = ({ children }) => {
                 <Icon icon='lucide:circle-dollar-sign' className='menu-icon' />
                 <span>Deposit</span>
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <NavLink
                 to='/view-profile'

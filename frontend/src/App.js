@@ -102,7 +102,9 @@ function App() {
     <BrowserRouter>
       <RouteScrollToTop />
       <Routes>
-        <Route exact path='/' element={<HomePageFour />} />
+      
+        <Route exact path='/' element={<SignInPage />} />
+        <Route exact path='/homePage' element={<HomePageFour />} />
         <Route exact path='/index-2' element={<HomePageTwo />} />
         <Route exact path='/index-3' element={<HomePageThree />} />
         <Route exact path='/index-4' element={<HomePageFour />} />
